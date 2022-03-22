@@ -1,0 +1,48 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+  
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Username" formControlName='username'>
+  </mat-form-field>
+
+  
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Address" formControlName='address'>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input type="number" matInput placeholder="Mobile" formControlName='mobileNumber' pattern="[0-9]{10}">
+  </mat-form-field>
+  
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Email" formControlName='email_address'>
+  </mat-form-field>
+  
+
+  <mat-form-field class="full-width" >
+    <input matInput type="password" placeholder="Password" formControlName='password' required>
+  </mat-form-field>
+
+  <mat-form-field class="full-width"*ngIf="!isEdit" >
+    <input matInput type="password" placeholder="Confirm Password" formControlName='confirmPassword'>
+  </mat-form-field>
+
+  <div *ngIf="!isEdit && f.confirmPassword.errors && f.confirmPassword.errors.mustMatch">
+    <div>Passwords must match</div>
+  </div>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Companies</mat-label>
+    <mat-select formControlName="companies" multiple>
+      <mat-option value="Trishala">Trishala</mat-option>
+      <mat-option value="Shanti">Shanti</mat-option>
+      <mat-option value="F-31">F-31</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="float-right">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button type="submit">Submit</button>
+  </div>
+
+</form>
